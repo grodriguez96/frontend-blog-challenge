@@ -7,10 +7,12 @@ export default function NavBar() {
   const NavLinks = [
     {
       name: "Inicio",
+      id: 1,
       path: "/",
     },
     {
       name: "Crear Nuevo",
+      id: 2,
       path: "/add",
     },
   ];
@@ -22,7 +24,9 @@ export default function NavBar() {
       <Navbar.Collapse id="navbar">
         <Nav className="ml-auto">
           {NavLinks.map((link) => (
-            <Link to={link.path}>{link.name}</Link>
+            <Link to={link.path} key={link.id}>
+              {link.name}
+            </Link>
           ))}
         </Nav>
       </Navbar.Collapse>
