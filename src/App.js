@@ -3,16 +3,19 @@ import PostsList from "./Components/PostsList";
 import "./App.css";
 import { PostProvider } from "./Providers/PostContext";
 import AddPost from "./Components/AddPost";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <PostProvider>
-      <div className="app">
+    <Router>
+      <PostProvider>
         <Navbar />
-        <PostsList />
-        <AddPost />
-      </div>
-    </PostProvider>
+        <Switch>
+          <Route path="/" exact component={PostsList} />
+          <Route path="/add" component={AddPost} />
+        </Switch>
+      </PostProvider>
+    </Router>
   );
 }
 

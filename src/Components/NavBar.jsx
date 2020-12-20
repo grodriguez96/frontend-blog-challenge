@@ -1,17 +1,17 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Link from "./Link";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const NavLinks = [
     {
       name: "Inicio",
-      id: 1,
+      path: "/",
     },
     {
       name: "Crear Nuevo",
-      id: 2,
+      path: "/add",
     },
   ];
 
@@ -22,7 +22,7 @@ export default function NavBar() {
       <Navbar.Collapse id="navbar">
         <Nav className="ml-auto">
           {NavLinks.map((link) => (
-            <Link name={link.name} key={link.id} />
+            <Link to={link.path}>{link.name}</Link>
           ))}
         </Nav>
       </Navbar.Collapse>
