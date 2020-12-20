@@ -25,9 +25,21 @@ export default function AddPost() {
   };
   return (
     <form onSubmit={addPost}>
-      <input type="text" name="title" value={title} onChange={updateTile} />
-      <input type="text" name="body" value={body} onChange={updateBody} />
-      <button>Crear</button>
+      <input
+        type="text"
+        name="title"
+        required="true"
+        value={title}
+        onChange={updateTile}
+      />
+      <input
+        type="text"
+        name="body"
+        required="true"
+        value={body}
+        onChange={updateBody}
+      />
+      <button type="submit">Crear</button>
     </form>
   );
 }
