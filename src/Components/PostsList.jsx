@@ -7,9 +7,9 @@ export default function PostsList() {
   const [post, setPost] = useContext(PostContext);
   return (
     <div>
-      {!post
+      {post.length > 0
         ? post.map((post) => <Post title={post.title} key={post.id} />)
-        : "Hubo un error en la carga de datos"}
+        : "Error en la carga de datos"}
     </div>
   );
 }
