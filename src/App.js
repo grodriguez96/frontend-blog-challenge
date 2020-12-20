@@ -2,6 +2,7 @@ import Navbar from "./Components/NavBar";
 import PostsList from "./Components/PostsList";
 import "./App.css";
 import { PostProvider } from "./Providers/PostContext";
+import AddPost from "./Components/AddPost";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div className="app">
         <Navbar />
         <PostsList />
+        <AddPost />
       </div>
     </PostProvider>
   );
