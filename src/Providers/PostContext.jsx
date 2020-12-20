@@ -10,7 +10,7 @@ export function PostProvider(props) {
   const [post, setPost] = useState([]);
 
   const fetchItems = async () => {
-    const data = await fetch("https://jsonplaceholder.typicode.com/post");
+    const data = await fetch("https://jsonplaceholder.typicode.com/posts");
     const items = await data.json();
     setPost(items);
   };
