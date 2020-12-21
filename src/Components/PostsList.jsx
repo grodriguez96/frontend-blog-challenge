@@ -8,7 +8,9 @@ export default function PostsList() {
   return (
     <div>
       {post.length > 0
-        ? post.map((post) => <Post title={post.title} key={post.id} />)
+        ? post.map((post) => (
+            <Post title={post.title} key={post.id} id={post.id} />
+          ))
         : "Error en la carga de datos"}
     </div>
   );
