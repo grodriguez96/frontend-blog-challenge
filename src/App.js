@@ -1,5 +1,5 @@
 import Navbar from "./Components/NavBar";
-import PostsList from "./Components/PostList/PostsList";
+import PostsList from "./Components/PostsList";
 import "./App.css";
 import { PostProvider } from "./Providers/PostContext";
 import AddPost from "./Components/AddPost";

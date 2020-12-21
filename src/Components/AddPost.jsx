@@ -20,7 +20,11 @@ export default function AddPost() {
     e.preventDefault();
     setPost((prevPost) => [
       ...prevPost,
-      { title: title, body: body, id: Math.random() },
+      {
+        title: title,
+        body: body,
+        id: Math.floor(Math.random() * (10000 - 101)) + 101,
+      },
     ]);
   };
   return (

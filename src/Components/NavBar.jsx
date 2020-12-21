@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { PostContext } from "../Providers/PostContext";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 
 export default function NavBar() {
+  const [post] = useContext(PostContext);
+
   const NavLinks = [
     {
       name: "Inicio",
@@ -20,6 +23,7 @@ export default function NavBar() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand>Blog Challenge</Navbar.Brand>
+      <Navbar.Brand>Cantidad de publicaciones: {post.length}</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbar" />
       <Navbar.Collapse id="navbar">
         <Nav className="ml-auto">
