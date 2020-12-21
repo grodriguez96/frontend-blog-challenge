@@ -10,8 +10,8 @@ import DeletePost from "./Components/DeletePost";
 
 function App() {
   return (
-    <Router>
-      <PostProvider>
+    <PostProvider>
+      <Router>
         <Navbar />
         <Switch>
           <Route path="/" exact component={PostsList} />
@@ -20,8 +20,8 @@ function App() {
           <Route path="/edit/:id" component={EditPost} />
           <Route path="/delete/:id" component={DeletePost} />
         </Switch>
-      </PostProvider>
-    </Router>
+      </Router>
+    </PostProvider>
   );
 }
 
