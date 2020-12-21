@@ -8,6 +8,14 @@ export default function PostDetailDesign({ post }) {
         <Card.Title>{post.title}</Card.Title>
       </Card.Header>
       <Card.Body>
+        <img
+          className="w-50"
+          src={
+            post.image ||
+            "https://logos.flamingtext.com/Word-Logos/prueba-design-sketch-name.png"
+          }
+          alt=""
+        />
         <Card.Text>{post.body}</Card.Text>
       </Card.Body>
     </Card>

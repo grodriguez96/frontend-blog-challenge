@@ -4,21 +4,28 @@ import PostDetailDesign from "../Shared/Post.DetailDesing";
 import Button from "react-bootstrap/Button";
 import { PostContext } from "../../Providers/PostContext";
 import PostAvatar from "../Shared/Post.Avatar";
+import axios from "axios";
 
 export default function DeletePost() {
   const [post, setPost] = useContext(PostContext);
   const history = useHistory();
-
-  const deletePos = () => {
-    const array = [...post]; // make a separate copy of the array
-    const index = array.findIndex((post) => post.id === paramId);
-    array.splice(index, 1);
-    setPost([...array]);
-    history.push("/");
-  };
   const { id } = useParams();
   const paramId = parseInt(id);
   const postFound = post.find((post) => post.id === paramId);
+
+  const deletePos = async () => {
+    try {
+      await axios.delete(`http://localhost:4000/posts/${paramId}`);
+      const array = [...post];
+      const index = array.findIndex((post) => post.id === paramId);
+      array.splice(index, 1);
+      setPost([...array]);
+      history.push("/");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return postFound ? (
     <div className="m-5">
       <h3 className="text-center mb-5">Desea eliminar esta publicacion ?</h3>

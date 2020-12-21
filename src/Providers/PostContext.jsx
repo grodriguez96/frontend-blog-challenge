@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import axios from "axios";
 
 export const PostContext = createContext();
 
@@ -10,9 +11,14 @@ export function PostProvider(props) {
   const [post, setPost] = useState([]);
 
   const fetchItems = async () => {
-    const data = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const items = await data.json();
-    setPost(items);
+    try {
+      const data = await axios.get(
+        "http://localhost:4000/posts/" ///ESTO ES LO QUE HAY QUE VARIAR
+      );
+      setPost(data.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
