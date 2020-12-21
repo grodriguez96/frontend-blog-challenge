@@ -1,55 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
+import Form from "./Form";
 import { PostContext } from "../Providers/PostContext";
-import { useHistory } from "react-router-dom";
 
 export default function EditPost() {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const history = useHistory();
-  const [post, setPost] = useContext(PostContext);
-  const updateTile = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const updateBody = (e) => {
-    setBody(e.target.value);
-  };
-
-  const updatePost = (e) => {
-    e.preventDefault();
-    const array = [...post]; // make a separate copy of the array
-    const index = array.findIndex((post) => post.id === paramId);
-    array.splice(index, 1, { title: title, body: body, id: postFinded.id });
-
-    setPost([...array]);
-    history.push("/");
-  };
   const { id } = useParams();
+  const [post] = useContext(PostContext);
   const paramId = parseInt(id);
   const postFinded = post.find((post) => post.id === paramId);
-  return postFinded ? (
-    <form onSubmit={updatePost}>
-      <input
-        type="text"
-        name="title"
-        required
-        value={title}
-        placeholder={postFinded.title}
-        onChange={updateTile}
-      />
-      <input
-        type="text"
-        name="body"
-        required
-        value={body}
-        placeholder={postFinded.body}
-        onChange={updateBody}
-      />
-
-      <button type="submit">Crear</button>
-    </form>
-  ) : (
-    "No hay resultado"
-  );
+  return postFinded ? <Form post={postFinded} /> : "No hay resultado";
 }

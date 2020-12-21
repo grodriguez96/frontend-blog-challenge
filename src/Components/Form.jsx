@@ -2,12 +2,12 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { PostContext } from "../Providers/PostContext";
 
-export default function Form() {
+export default function Form(props) {
   const [post, setPost] = useContext(PostContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-
   const history = useHistory();
+
   const updateTile = (e) => {
     setTitle(e.target.value);
   };
@@ -28,14 +28,25 @@ export default function Form() {
     ]);
     history.push("/");
   };
+
+  const updatePost = (e) => {
+    e.preventDefault();
+    const array = [...post];
+    const index = array.findIndex((post) => post.id === props.post.id);
+    array.splice(index, 1, { title: title, body: body, id: props.post.id });
+    setPost([...array]);
+    history.push("/");
+  };
+
   return (
-    <form onSubmit={addPost}>
+    <form onSubmit={props.action === "add" ? addPost : updatePost}>
       <input
         type="text"
         name="title"
         required
         value={title}
         onChange={updateTile}
+        placeholder={props.action === "add" ? "" : props.post.title}
       />
       <input
         type="text"
@@ -45,7 +56,9 @@ export default function Form() {
         onChange={updateBody}
       />
 
-      <button type="submit">Crear</button>
+      <button type="submit">
+        {props.action === "add" ? "Crear" : "Editar"}
+      </button>
     </form>
   );
 }
