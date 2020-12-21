@@ -4,7 +4,8 @@ import "./App.css";
 import { PostProvider } from "./Providers/PostContext";
 import AddPost from "./Components/AddPost";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import PostDetail from "./Components/PostDetail";
+import DetailPost from "./Components/DetailPost";
+import EditPost from "./Components/EditPost";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={PostsList} />
           <Route path="/add" component={AddPost} />
-          <Route path="/detail/:id" component={PostDetail} />
+          <Route path="/detail/:id" component={DetailPost} />
+          <Route path="/edit/:id" component={EditPost} />
         </Switch>
       </PostProvider>
     </Router>
