@@ -23,14 +23,15 @@ export default function NavBar() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand>Blog Challenge</Navbar.Brand>
-      <Navbar.Brand>Cantidad de publicaciones: {post.length}</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbar" />
       <Navbar.Collapse id="navbar">
         <Nav className="ml-auto">
           {NavLinks.map((link) => (
-            <Link to={link.path} key={link.id}>
-              {link.name}
-            </Link>
+            <Nav.Link>
+              <Link to={link.path} key={link.id}>
+                {link.name}
+              </Link>
+            </Nav.Link>
           ))}
         </Nav>
       </Navbar.Collapse>
