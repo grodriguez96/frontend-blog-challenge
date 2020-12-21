@@ -1,12 +1,14 @@
-import Navbar from "./Components/NavBar";
-import PostsList from "./Components/PostsList";
-import "./App.css";
-import { PostProvider } from "./Providers/PostContext";
-import AddPost from "./Components/AddPost";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import DetailPost from "./Components/DetailPost";
-import EditPost from "./Components/EditPost";
-import DeletePost from "./Components/DeletePost";
+import Navbar from "./Components/NavBar";
+import Home from "./Components/Home";
+import CreatePost from "./Components/PostCrud/Post.Create";
+import DetailPost from "./Components/PostCrud/Post.Detail";
+import EditPost from "./Components/PostCrud/Post.Edit";
+import DeletePost from "./Components/PostCrud/Post.Delete";
+import { PostProvider } from "./Providers/PostContext";
+
+import "./App.css";
 
 function App() {
   return (
@@ -14,8 +16,8 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/" exact component={PostsList} />
-          <Route path="/add" component={AddPost} />
+          <Route path="/" exact component={Home} />
+          <Route path="/add" component={CreatePost} />
           <Route path="/detail/:id" component={DetailPost} />
           <Route path="/edit/:id" component={EditPost} />
           <Route path="/delete/:id" component={DeletePost} />

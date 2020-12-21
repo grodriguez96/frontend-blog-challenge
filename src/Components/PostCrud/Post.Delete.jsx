@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { PostContext } from "../Providers/PostContext";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import { PostContext } from "../../Providers/PostContext";
 
-export default function PostDetail() {
+export default function DeletePost() {
   const [post, setPost] = useContext(PostContext);
   const history = useHistory();
 

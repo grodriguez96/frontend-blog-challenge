@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { PostContext } from "../Providers/PostContext";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { PostContext } from "../../Providers/PostContext";
 
 export default function FormPost(props) {
   const [post, setPost] = useContext(PostContext);

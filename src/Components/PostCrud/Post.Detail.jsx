@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { PostContext } from "../Providers/PostContext";
 import { useParams } from "react-router-dom";
+import { PostContext } from "../../Providers/PostContext";
 
-export default function PostDetail() {
+export default function DetailPost() {
   const [post] = useContext(PostContext);
 
   const { id } = useParams();

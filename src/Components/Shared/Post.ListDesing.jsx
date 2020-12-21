@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 
-export default function Post(props) {
+export default function PostListDesign(props) {
   const methods = [
     { name: "Detalle", path: "detail" },
     { name: "Editar", path: "edit" },

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { PostContext } from "../Providers/PostContext";
 import CardColumns from "react-bootstrap/CardColumns";
 import Card from "react-bootstrap/Card";
-import Post from "./Post";
+import PostListDesign from "./Shared/Post.ListDesing";
+import { PostContext } from "../Providers/PostContext";
 
 export default function PostsList() {
   const [post] = useContext(PostContext);
@@ -14,7 +14,11 @@ export default function PostsList() {
         {post.length > 0
           ? post.map((post) => (
               <Card bg="light" text="dark">
-                <Post title={post.title} id={post.id} user={post.userId} />
+                <PostListDesign
+                  title={post.title}
+                  id={post.id}
+                  user={post.userId}
+                />
               </Card>
             ))
           : "Cargando"}
