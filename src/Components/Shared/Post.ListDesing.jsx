@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+import PostAvatar from "./Post.Avatar";
 
 export default function PostListDesign(props) {
   const methods = [
@@ -11,6 +12,7 @@ export default function PostListDesign(props) {
 
   return (
     <div className="p-3 text-center d-block">
+      <PostAvatar userId={props.userId} />
       <Card.Title>{props.title}</Card.Title>
       {methods.map((method) => (
         <div className="d-inline-block m-1">

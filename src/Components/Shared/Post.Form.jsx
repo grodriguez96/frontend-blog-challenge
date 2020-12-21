@@ -26,6 +26,7 @@ export default function FormPost(props) {
         title: title,
         body: body,
         id: Math.floor(Math.random() * (10000 - 101)) + 101,
+        userId: 11,
       },
     ]);
     history.push("/");
@@ -35,13 +36,18 @@ export default function FormPost(props) {
     e.preventDefault();
     const array = [...post];
     const index = array.findIndex((post) => post.id === props.post.id);
-    array.splice(index, 1, { title: title, body: body, id: props.post.id });
+    array.splice(index, 1, {
+      title: title,
+      body: body,
+      id: props.post.id,
+      userId: 11,
+    });
     setPost([...array]);
     history.push("/");
   };
 
   return (
-    <div className="m-auto w-50 pt-5">
+    <div className="container w-50 pt-5">
       <Form onSubmit={props.action === "add" ? addPost : updatePost}>
         <Form.Group controlId="title">
           <Form.Label>Titulo</Form.Label>

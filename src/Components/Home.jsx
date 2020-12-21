@@ -8,19 +8,19 @@ export default function PostsList() {
   const [post] = useContext(PostContext);
 
   return (
-    <div className="w-100 min-vh-100 overflow-hidden">
+    <div>
       <h3 className="text-center mt-5">Lista de publicaciones</h3>
       <h6 className="text-center mb-5">
         Hay un total de : {post.length} publicaciones
       </h6>
-      <CardColumns className="m-auto" style={{ width: "98%" }}>
+      <CardColumns className="container" style={{ width: "98%" }}>
         {post.length
           ? post.map((post) => (
               <Card bg="light" text="dark">
                 <PostListDesign
                   title={post.title}
                   id={post.id}
-                  user={post.userId}
+                  userId={post.userId}
                 />
               </Card>
             ))
