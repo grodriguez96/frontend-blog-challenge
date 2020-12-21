@@ -28,14 +28,14 @@ export default function AddPost() {
       <input
         type="text"
         name="title"
-        required="true"
+        required
         value={title}
         onChange={updateTile}
       />
       <input
         type="text"
         name="body"
-        required="true"
+        required
         value={body}
         onChange={updateBody}
       />
