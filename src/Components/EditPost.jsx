@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import Form from "./Form";
+import FormPost from "./FormPost";
 import { PostContext } from "../Providers/PostContext";
 
 export default function EditPost() {
@@ -8,5 +8,13 @@ export default function EditPost() {
   const [post] = useContext(PostContext);
   const paramId = parseInt(id);
   const postFinded = post.find((post) => post.id === paramId);
-  return postFinded ? <Form post={postFinded} /> : "No hay resultado";
+
+  return postFinded ? (
+    <div className="mt-5">
+      <h3 className="text-center">Formulario de Edicion</h3>{" "}
+      <FormPost post={postFinded} />
+    </div>
+  ) : (
+    "No hay resultado"
+  );
 }

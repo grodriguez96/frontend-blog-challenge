@@ -1,6 +1,11 @@
 import React from "react";
-import Form from "./Form";
+import FormPost from "./FormPost";
 
 export default function AddPost() {
-  return <Form action="add" />;
+  return (
+    <div className="mt-5">
+      <h3 className="text-center">Formulario de creacion</h3>
+      <FormPost action="add" />
+    </div>
+  );
 }
