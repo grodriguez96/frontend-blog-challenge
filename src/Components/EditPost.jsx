@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PostContext } from "../Providers/PostContext";
+import { useHistory } from "react-router-dom";
 
 export default function EditPost() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const history = useHistory();
   const [post, setPost] = useContext(PostContext);
   const updateTile = (e) => {
     setTitle(e.target.value);
@@ -21,6 +23,7 @@ export default function EditPost() {
     array.splice(index, 1, { title: title, body: body, id: postFinded.id });
 
     setPost([...array]);
+    history.push("/");
   };
   const { id } = useParams();
   const paramId = parseInt(id);
@@ -43,6 +46,7 @@ export default function EditPost() {
         placeholder={postFinded.body}
         onChange={updateBody}
       />
+
       <button type="submit">Crear</button>
     </form>
   ) : (

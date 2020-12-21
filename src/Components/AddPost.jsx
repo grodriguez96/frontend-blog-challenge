@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { PostContext } from "../Providers/PostContext";
 
 export default function AddPost() {
@@ -7,7 +8,7 @@ export default function AddPost() {
   const [body, setBody] = useState("");
   // eslint-disable-next-line no-unused-vars
   const [post, setPost] = useContext(PostContext);
-
+  const history = useHistory();
   const updateTile = (e) => {
     setTitle(e.target.value);
   };
@@ -26,6 +27,7 @@ export default function AddPost() {
         id: Math.floor(Math.random() * (10000 - 101)) + 101,
       },
     ]);
+    history.push("/");
   };
   return (
     <form onSubmit={addPost}>
@@ -43,6 +45,7 @@ export default function AddPost() {
         value={body}
         onChange={updateBody}
       />
+
       <button type="submit">Crear</button>
     </form>
   );
