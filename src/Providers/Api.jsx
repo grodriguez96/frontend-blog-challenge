@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: `https://jsonplaceholder.typicode.com/posts`,
+  baseURL: process.env.REACT_APP_API_URL,
 });

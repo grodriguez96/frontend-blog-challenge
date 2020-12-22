@@ -11,6 +11,7 @@ export default function DetailPost() {
 
   useEffect(() => {
     getItems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getItems = async () => {
