@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { PostContext } from "../Providers/PostContext";
-import PostList from "./Post.List";
+import PostList from "./Shared/Post.List";
 
 export default function PostsList() {
   const [post] = useContext(PostContext);

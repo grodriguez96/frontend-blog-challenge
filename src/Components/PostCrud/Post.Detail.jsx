@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import PostDetailDesign from "../Shared/Post.DetailDesing";
+import PostCardDetail from "../Shared/Post.CardDetail";
 import { PostContext } from "../../Providers/PostContext";
 import PostAvatar from "../Shared/Post.Avatar";
 
@@ -17,7 +17,7 @@ export default function DetailPost() {
       <div className="w-50 container">
         <h6 className="text-center mb-2">Creada por :</h6>
         <PostAvatar userId={postFound.userId} />
-        <PostDetailDesign post={postFound} />
+        <PostCardDetail post={postFound} />
       </div>
     </div>
   ) : (

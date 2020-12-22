@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/CardColumns";
-import PostCard from "./Shared/Post.Card";
+import PostCard from "./Post.Card";
 
 export default function PostList({ post }) {
   return (

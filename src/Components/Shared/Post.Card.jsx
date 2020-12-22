@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import PostButton from "../Post.Button";
+import PostButton from "./Post.Button";
 import PostAvatar from "./Post.Avatar";
 
 export default function PostCard({ post }) {

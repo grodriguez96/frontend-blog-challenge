@@ -1,24 +1,18 @@
 import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import API from "./Api";
 
 export const PostContext = createContext();
 
 export function PostProvider(props) {
   useEffect(() => {
-    fetchItems();
+    getItems();
   }, []);
 
   const [post, setPost] = useState([]);
 
-  const fetchItems = async () => {
-    try {
-      const data = await axios.get(
-        "http://localhost:4000/posts/" ///ESTO ES LO QUE HAY QUE VARIAR
-      );
-      setPost(data.data);
-    } catch (err) {
-      console.error(err);
-    }
+  const getItems = async () => {
+    const data = await API.get();
+    setPost(data.data);
   };
 
   return (

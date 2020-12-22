@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import PostDetailDesign from "../Shared/Post.DetailDesing";
+import PostCardDetail from "../Shared/Post.CardDetail";
 import Button from "react-bootstrap/Button";
 import { PostContext } from "../../Providers/PostContext";
 import PostAvatar from "../Shared/Post.Avatar";
-import axios from "axios";
-
+import API from "../../Providers/Api";
 export default function DeletePost() {
   const [post, setPost] = useContext(PostContext);
   const history = useHistory();
@@ -15,7 +14,7 @@ export default function DeletePost() {
 
   const deletePos = async () => {
     try {
-      await axios.delete(`http://localhost:4000/posts/${paramId}`);
+      await API.delete(`${paramId}`);
       const array = [...post];
       const index = array.findIndex((post) => post.id === paramId);
       array.splice(index, 1);
@@ -29,17 +28,17 @@ export default function DeletePost() {
   return postFound ? (
     <div className="m-5">
       <h3 className="text-center mb-5">Desea eliminar esta publicacion ?</h3>
-
       <div className="container w-50">
         <h6 className="text-center mb-2">Creada por :</h6>
-        <PostAvatar userId={postFound.userId} />
+        <PostAvatar userId={post.userId} />
 
-        <PostDetailDesign post={postFound} />
-      </div>
-      <div className="text-center mt-3">
-        <Button variant="primary" onClick={deletePos}>
-          Eliminar
-        </Button>
+        <PostCardDetail post={post} />
+
+        <div className="text-center mt-3">
+          <Button variant="primary" onClick={deletePos}>
+            Eliminar
+          </Button>
+        </div>
       </div>
     </div>
   ) : (
