@@ -11,8 +11,8 @@ export function PostProvider(props) {
   const [post, setPost] = useState([]);
 
   const getItems = async () => {
-    const data = await API.get();
-    setPost(data.data);
+    const res = await API.get();
+    setPost(res.data);
   };
 
   return (

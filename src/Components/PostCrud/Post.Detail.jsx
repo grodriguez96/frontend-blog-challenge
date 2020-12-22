@@ -1,23 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PostCardDetail from "../Shared/Post.CardDetail";
-import { PostContext } from "../../Providers/PostContext";
 import PostAvatar from "../Shared/Post.Avatar";
+import API from "../../Providers/Api";
 
 export default function DetailPost() {
-  const [post] = useContext(PostContext);
-
   const { id } = useParams();
   const paramId = parseInt(id);
-  const postFound = post.find((post) => post.id === paramId);
+  const [post, setPost] = useState();
 
-  return postFound ? (
+  useEffect(() => {
+    getItems();
+  }, []);
+
+  const getItems = async () => {
+    try {
+      const res = await API.get(`/${paramId}`);
+      setPost(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return post ? (
     <div className="m-5">
       <h3 className="text-center mb-5"> Detalle de la publicacion</h3>
       <div className="w-50 container">
         <h6 className="text-center mb-2">Creada por :</h6>
-        <PostAvatar userId={postFound.userId} />
-        <PostCardDetail post={postFound} />
+        <PostAvatar userId={post.userId} />
+        <PostCardDetail post={post} />
       </div>
     </div>
   ) : (

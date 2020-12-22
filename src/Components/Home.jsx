@@ -1,9 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PostContext } from "../Providers/PostContext";
+import NotFound from "./Shared/NotFound";
 import PostList from "./Shared/Post.List";
+import SpinnerLoading from "./Shared/SpinnerLoading";
 
 export default function PostsList() {
   const [post] = useContext(PostContext);
+  const [showLoading, setShowLoading] = useState(false);
+
+  useEffect(() => {
+    let timer = setTimeout(() => setShowLoading(true), 7000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <div>
@@ -11,7 +21,13 @@ export default function PostsList() {
       <h6 className="text-center mb-5">
         Hay un total de : {post.length} publicaciones
       </h6>
-      {post.length ? <PostList post={post} /> : "No hay datos que mostrar"}
+      {post.length ? (
+        <PostList post={post} />
+      ) : !showLoading ? (
+        <SpinnerLoading />
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
 }
