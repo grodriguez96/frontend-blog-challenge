@@ -8,6 +8,8 @@ export default function FormPost(props) {
   const [post, setPost] = useContext(PostContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [category, setCategory] = useState("");
+  const [image, setImage] = useState("");
   const history = useHistory();
 
   const updateTile = (e) => {
@@ -18,27 +20,41 @@ export default function FormPost(props) {
     setBody(e.target.value);
   };
 
+  const updateCategory = (e) => {
+    setCategory(e.target.value);
+  };
+
+  const updateImage = (e) => {
+    setImage(e.target.value);
+  };
+
   const ADD = "add";
 
   const addPost = async (e) => {
     e.preventDefault();
 
-    const newPost = {
+    let newPost = {
       title: title,
       body: body,
-      image:
-        "https://logos.flamingtext.com/Word-Logos/prueba-design-china-name.png",
-      id: Math.floor(Math.random() * (10000 - 101)) + 101,
+      image: image,
       userId: 11,
-      categoryId: 1,
+      categoryId: category,
     };
     try {
-      await API.post("/", newPost);
-
+      const res = await API.post("/", newPost);
+      newPost = {
+        title: title,
+        body: body,
+        image: image,
+        userId: 11,
+        id: res.data.id,
+        categoryId: category,
+      };
       setPost((prevPost) => [...prevPost, newPost]);
       history.push("/");
     } catch (err) {
       console.error(err);
+      alert(err);
     }
   };
 
@@ -50,8 +66,8 @@ export default function FormPost(props) {
       body: body,
       id: props.post.id,
       userId: props.post.userId,
-      categoryId: props.post.categoryId,
-      image: props.post.image,
+      categoryId: category,
+      image: image,
     };
 
     try {
@@ -93,6 +109,28 @@ export default function FormPost(props) {
             onChange={updateBody}
           />
         </Form.Group>
+
+        <Form.Group controlId="image">
+          <Form.Label>Imagen url</Form.Label>
+          <Form.Control
+            type="text"
+            rows={3}
+            name="image"
+            required
+            value={image}
+            onChange={updateImage}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="category">
+          <Form.Label>Categoria</Form.Label>
+          <Form.Control as="select" onChange={updateCategory}>
+            <option value="1">Cine</option>
+            <option value="2">Comida</option>
+            <option value="3">Ropa</option>
+          </Form.Control>
+        </Form.Group>
+
         <Button variant="primary" type="submit">
           {props.action === "add" ? "Crear" : "Editar"}
         </Button>

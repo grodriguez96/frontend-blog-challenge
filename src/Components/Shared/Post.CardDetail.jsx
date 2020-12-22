@@ -4,7 +4,6 @@ import Card from "react-bootstrap/Card";
 export default function PostCardDetail({ post }) {
   const defaultImg =
     "https://logos.flamingtext.com/Word-Logos/prueba-design-sketch-name.png";
-
   return (
     <Card className="text-center">
       <Card.Header>

@@ -15,6 +15,7 @@ export default function PostsList() {
     };
   }, []);
 
+  console.log();
   return (
     <div>
       <h3 className="text-center mt-5">Lista de publicaciones</h3>

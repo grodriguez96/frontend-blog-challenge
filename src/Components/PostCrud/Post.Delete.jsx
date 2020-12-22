@@ -22,6 +22,7 @@ export default function DeletePost() {
       history.push("/");
     } catch (err) {
       console.error(err);
+      alert(err);
     }
   };
 
@@ -32,7 +33,7 @@ export default function DeletePost() {
         <h6 className="text-center mb-2">Creada por :</h6>
         <PostAvatar userId={postFound.userId} />
 
-        <PostCardDetail post={post} />
+        <PostCardDetail post={postFound} />
 
         <div className="text-center mt-3">
           <Button variant="primary" onClick={deletePos}>
