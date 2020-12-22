@@ -14,7 +14,7 @@ export default function DeletePost() {
 
   const deletePos = async () => {
     try {
-      await API.delete(`${paramId}`);
+      await API.delete(`/${paramId}`);
       const array = [...post];
       const index = array.findIndex((post) => post.id === paramId);
       array.splice(index, 1);
@@ -30,7 +30,7 @@ export default function DeletePost() {
       <h3 className="text-center mb-5">Desea eliminar esta publicacion ?</h3>
       <div className="container w-50">
         <h6 className="text-center mb-2">Creada por :</h6>
-        <PostAvatar userId={post.userId} />
+        <PostAvatar userId={postFound.userId} />
 
         <PostCardDetail post={post} />
 

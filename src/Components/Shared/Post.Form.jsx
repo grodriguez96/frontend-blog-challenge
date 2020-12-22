@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { PostContext } from "../../Providers/PostContext";
-import axios from "axios";
-
+import API from "../../Providers/Api";
 export default function FormPost(props) {
   const [post, setPost] = useContext(PostContext);
   const [title, setTitle] = useState("");
@@ -19,6 +18,8 @@ export default function FormPost(props) {
     setBody(e.target.value);
   };
 
+  const ADD = "add";
+
   const addPost = async (e) => {
     e.preventDefault();
 
@@ -32,7 +33,7 @@ export default function FormPost(props) {
       categoryId: 1,
     };
     try {
-      await axios.post("http://localhost:4000/posts/", newPost);
+      await API.post("/", newPost);
 
       setPost((prevPost) => [...prevPost, newPost]);
       history.push("/");
@@ -54,10 +55,7 @@ export default function FormPost(props) {
     };
 
     try {
-      await axios.patch(
-        `http://localhost:4000/posts/${props.post.id}`,
-        newPost
-      );
+      await API.patch(`/${props.post.id}`, newPost);
       const array = [...post];
       const index = array.findIndex((post) => post.id === props.post.id);
       array.splice(index, 1, newPost);
@@ -70,7 +68,7 @@ export default function FormPost(props) {
 
   return (
     <div className="container w-50 pt-5">
-      <Form onSubmit={props.action === "add" ? addPost : updatePost}>
+      <Form onSubmit={props.action === ADD ? addPost : updatePost}>
         <Form.Group controlId="title">
           <Form.Label>Titulo</Form.Label>
           <Form.Control
@@ -79,7 +77,8 @@ export default function FormPost(props) {
             required
             value={title}
             onChange={updateTile}
-            placeholder={props.action === "add" ? "" : props.post.title}
+            placeholder={props.action === ADD ? "" : props.post.title}
+            className="text-center"
           />
         </Form.Group>
 
