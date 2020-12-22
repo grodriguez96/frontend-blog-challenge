@@ -5,9 +5,9 @@ import PostAvatar from "./Post.Avatar";
 
 export default function PostCard({ post }) {
   const methods = [
-    { name: "Detalle", path: "detail" },
-    { name: "Editar", path: "edit" },
-    { name: "Eliminar", path: "delete" },
+    { name: "far fa-eye", path: "detail" },
+    { name: "far fa-edit", path: "edit" },
+    { name: "far fa-trash-alt", path: "delete" },
   ];
 
   return (
