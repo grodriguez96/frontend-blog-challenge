@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import FormPost from "../Shared/Post.Form";
 import { PostContext } from "../../Providers/PostContext";
+import NotFound from "../Shared/NotFound";
 
 export default function EditPost() {
   const { id } = useParams();
@@ -15,6 +16,6 @@ export default function EditPost() {
       <FormPost post={postFound} />
     </div>
   ) : (
-    "No hay resultado"
+    <NotFound message="No se ha encontrado el elemento solicitado." />
   );
 }

@@ -27,7 +27,7 @@ export default function PostsList() {
       ) : !showLoading ? (
         <SpinnerLoading />
       ) : (
-        <NotFound />
+        <NotFound message="No hay registro de datos. Agregue alguno nuevo!" />
       )}
     </div>
   );

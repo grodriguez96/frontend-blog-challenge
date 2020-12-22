@@ -11,8 +11,13 @@ export function PostProvider(props) {
   const [post, setPost] = useState([]);
 
   const getItems = async () => {
-    const res = await API.get();
-    setPost(res.data);
+    try {
+      const res = await API.get();
+      setPost(res.data);
+    } catch (err) {
+      console.error(err);
+      alert(err);
+    }
   };
 
   return (

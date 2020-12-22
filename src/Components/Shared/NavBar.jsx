@@ -22,7 +22,9 @@ export default function NavBar() {
       <Navbar.Collapse id="navbar">
         <Nav className="ml-auto">
           {NavLinks.map((link) => (
-            <Link to={link.path}>{link.name}</Link>
+            <Nav.Link>
+              <Link to={link.path}>{link.name}</Link>
+            </Nav.Link>
           ))}
         </Nav>
       </Navbar.Collapse>

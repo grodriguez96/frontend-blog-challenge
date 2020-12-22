@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import PostCardDetail from "../Shared/Post.CardDetail";
 import PostAvatar from "../Shared/Post.Avatar";
 import API from "../../Providers/Api";
+import NotFound from "../Shared/NotFound";
 
 export default function DetailPost() {
   const { id } = useParams();
@@ -34,6 +35,6 @@ export default function DetailPost() {
       </div>
     </div>
   ) : (
-    "No hay resultado"
+    <NotFound message="No se ha encontrado el elemento solicitado." />
   );
 }

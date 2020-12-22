@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { PostContext } from "../../Providers/PostContext";
 import PostAvatar from "../Shared/Post.Avatar";
 import API from "../../Providers/Api";
+import NotFound from "../Shared/NotFound";
 export default function DeletePost() {
   const [post, setPost] = useContext(PostContext);
   const history = useHistory();
@@ -43,6 +44,6 @@ export default function DeletePost() {
       </div>
     </div>
   ) : (
-    "No hay resultado"
+    <NotFound message="No se ha encontrado un elemento para borrar." />
   );
 }
